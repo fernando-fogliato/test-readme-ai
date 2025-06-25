@@ -11,6 +11,57 @@ A simple Spring Boot REST API application that demonstrates CRUD (Create, Read, 
 - **Database Console**: H2 web console for database inspection
 - **Sample Data**: Pre-loaded sample users for testing
 
+
+## gRPC API for Department Service
+
+This application now exposes a gRPC API for managing Department entities, providing an alternative high-performance interface alongside the existing REST API.
+
+### Features
+
+A new gRPC service, `DepartmentService`, has been added, offering the following operations:
+
+*   `GetAllDepartments`: Retrieves all departments.
+*   `GetDepartmentById`: Retrieves a single department by its ID.
+*   `CreateDepartment`: Creates a new department.
+*   `UpdateDepartment`: Updates an existing department.
+*   `DeleteDepartment`: Deletes a department by its ID.
+
+These operations mirror the functionality available via the existing REST API.
+
+### Usage
+
+To interact with the gRPC service, clients can use the provided Protocol Buffer definition file:
+
+**`src/main/proto/department.proto`**
+
+```protobuf
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.springbootcrudapp.grpc";
+option java_outer_classname = "DepartmentProto";
+
+package department;
+
+// Department service definition
+service DepartmentService {
+    // Basic CRUD operations
+    rpc GetAllDepartments(GetAllDepartmentsRequest) returns (GetAllDepartmentsResponse);
+    rpc GetDepartmentById(GetDepartmentByIdRequest) returns (GetDepartmentByIdResponse);
+    rpc CreateDepartment(CreateDepartmentRequest) returns (CreateDepartmentResponse);
+    rpc UpdateDepartment(UpdateDepartmentRequest) returns (UpdateDepartmentResponse);
+    rpc DeleteDepartment(DeleteDepartmentRequest) returns (DeleteDepartmentResponse);
+}
+
+// ... (corresponding message definitions for requests and responses are also in this file)
+```
+
+Clients in various languages can generate gRPC stubs from this `.proto` file to communicate with the service.
+
+**Example Client (Java)**
+
+An example Java gRPC client, `DepartmentGrpcClient.java`, is included in the project (`src
+
 ## Technologies Used
 
 - Java 17
