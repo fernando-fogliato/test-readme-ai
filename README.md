@@ -11,6 +11,33 @@ A simple Spring Boot REST API application that demonstrates CRUD (Create, Read, 
 - **Database Console**: H2 web console for database inspection
 - **Sample Data**: Pre-loaded sample users for testing
 
+
+This section details the new features introduced in PR #12.
+
+---
+
+## New Features
+
+### Departments Management API
+
+This release introduces a new set of RESTful endpoints for managing department records within the application. This includes full CRUD (Create, Read, Update, Delete) capabilities for departments.
+
+#### Key Features:
+*   **Department Entity**: A new `Department` entity has been added, representing department information with fields such as `id` and `name`.
+*   **RESTful API**: Dedicated endpoints for interacting with department data, accessible via `/api/departments`.
+*   **Data Validation**: Input validation is applied to ensure data integrity. For instance, the `departmentName` must be between 2 and 50 characters and cannot be blank.
+
+#### API Endpoints:
+
+All department-related endpoints are prefixed with `/api/departments`.
+
+| Method | Endpoint               | Description                               | Request Body (Example)             | Response Body (Example)            |
+|--------|------------------------|-------------------------------------------|------------------------------------|------------------------------------|
+| `GET`  | `/api/departments`     | Retrieve a list of all departments.       | `N/A`                              | `[ { "id": 1, "name": "HR" }, ... ]` |
+| `GET`  | `/api/departments/{id}`| Retrieve a single department by its ID.   | `N/A`                              | `{ "id": 1, "name": "HR" }`        |
+| `POST` | `/api/departments`     | Create a new department.                  | `{ "name": "Marketing" }`          | `{ "id": 2, "name": "Marketing" }` |
+| `PUT`  | `/api/departments/{id}`| Update an existing department by its ID.  | `{ "name": "Sales & Marketing" }`  | `{ "id":
+
 ## Technologies Used
 
 - Java 17
