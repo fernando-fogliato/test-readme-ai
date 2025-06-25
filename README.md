@@ -11,6 +11,31 @@ A simple Spring Boot REST API application that demonstrates CRUD (Create, Read, 
 - **Database Console**: H2 web console for database inspection
 - **Sample Data**: Pre-loaded sample users for testing
 
+
+Here's a README update section for the new features:
+
+---
+
+## What's New (PR #24: Product Management API)
+
+We're excited to announce the introduction of a comprehensive **Product Management API**! This new set of features allows for full CRUD (Create, Read, Update, Delete) operations on product data, complete with robust input validation and flexible search capabilities.
+
+### Key Features
+
+*   **Product Creation:** Easily add new products with details like name, description, price, and quantity.
+*   **Product Retrieval:** Fetch all products, retrieve a single product by its ID, or search for products based on various criteria (name, description, price range, creation/update dates).
+*   **Product Updates:** Modify existing product details.
+*   **Product Deletion:** Remove products from the system.
+*   **Data Validation:** All product inputs are validated to ensure data integrity.
+
+### How to Use
+
+The Product Management API is exposed via RESTful endpoints under the `/api/products` base path.
+
+**Base URL:** `/api/products`
+
+| Method | Endpoint
+
 ## Technologies Used
 
 - Java 17
