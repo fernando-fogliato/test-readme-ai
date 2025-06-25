@@ -11,6 +11,39 @@ A simple Spring Boot REST API application that demonstrates CRUD (Create, Read, 
 - **Database Console**: H2 web console for database inspection
 - **Sample Data**: Pre-loaded sample users for testing
 
+
+Here's a README update section for the new features:
+
+---
+
+## API Updates: Product Category Management
+
+This update introduces a comprehensive set of RESTful API endpoints for managing product categories. You can now perform full CRUD (Create, Read, Update, Delete) operations on product category entities, along with several search functionalities.
+
+### New Features
+
+*   **Product Category Entity:** A new `ProductCategory` entity has been added, representing a product category with fields such as `id`, `name`, `description`, `createdAt`, and `updatedAt`.
+*   **RESTful API Endpoints:** A dedicated set of API endpoints under `/api/product-categories` provides full management capabilities for product categories.
+*   **Service Layer:** A `ProductCategoryService` has been implemented to handle business logic and interact with the data repository.
+*   **Data Repository:** A `ProductCategoryRepository` extends `JpaRepository`, enabling seamless database operations for product categories, including custom search queries.
+
+### How to Use
+
+All new endpoints are accessible under the base path `/api/product-categories`.
+
+#### 1. Create a New Product Category
+
+*   **Endpoint:** `POST /api/product-categories`
+*   **Description:** Creates a new product category.
+*   **Request Body (JSON):**
+    ```json
+    {
+      "name": "Electronics",
+      "description": "Category for electronic gadgets and devices"
+    }
+    ```
+*   **Example (cURL):**
+
 ## Technologies Used
 
 - Java 17
