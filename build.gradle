@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
+    id 'com.google.protobuf' version '0.9.4'
 }
 
 group = 'com.example'
@@ -31,6 +32,12 @@ dependencies {
     
     // Spring Boot Starter Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    // gRPC Dependencies
+    implementation 'net.devh:grpc-server-spring-boot-starter:2.15.0.RELEASE'
+    implementation 'io.grpc:grpc-protobuf:1.58.0'
+    implementation 'io.grpc:grpc-stub:1.58.0'
+    compileOnly 'org.apache.tomcat:annotations-api:6.0.53'
 }
 
 tasks.named('test') {
@@ -51,4 +58,21 @@ jar {
 bootJar {
     enabled = true
     archiveClassifier = 'boot'
+}
+
+// Protobuf configuration
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.24.4"
+    }
+    plugins {
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.58.0'
+        }
+    }
+    generateProtoTasks {
+        all()*.plugins {
+            grpc {}
+        }
+    }
 } 
