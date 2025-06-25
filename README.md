@@ -11,6 +11,29 @@ A simple Spring Boot REST API application that demonstrates CRUD (Create, Read, 
 - **Database Console**: H2 web console for database inspection
 - **Sample Data**: Pre-loaded sample users for testing
 
+
+This section details the re-introduction of the Customer Management API.
+
+---
+
+## New Feature: Customer Management API
+
+This update re-introduces a comprehensive set of endpoints for managing customer data. This includes a new `Customer` entity, dedicated repository, service layer, and a RESTful API controller, providing full CRUD (Create, Read, Update, Delete) capabilities.
+
+### Features
+
+*   **Customer Entity**: A new `Customer` entity (`com.example.springbootcrudapp.entity.Customer`) to store customer details including company name, contact person, email, phone, and address information.
+*   **CRUD Operations**: Full Create, Read, Update, and Delete (CRUD) capabilities for customer records.
+*   **Search Capabilities**: Retrieve customers by ID, email, or company name.
+*   **Data Validation**: Input validation applied to customer data fields (e.g., `@NotBlank`, `@Email`, `@Size` constraints) to ensure data integrity.
+
+### API Endpoints
+
+All customer-related operations are accessible under the `/api/customers` base path.
+
+| Method | Endpoint                       | Description                                      |
+|
+
 ## Technologies Used
 
 - Java 17
