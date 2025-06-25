@@ -11,6 +11,65 @@ A simple Spring Boot REST API application that demonstrates CRUD (Create, Read, 
 - **Database Console**: H2 web console for database inspection
 - **Sample Data**: Pre-loaded sample users for testing
 
+
+## gRPC API for Department Service
+
+This application now exposes a gRPC API for managing Department entities, providing an alternative high-performance interface to the existing REST API.
+
+### 1. New Features
+
+A new gRPC service, `DepartmentService`, has been added, offering the following operations for Department entities:
+
+*   **`GetAllDepartments`**: Retrieve a list of all departments.
+*   **`GetDepartmentById`**: Retrieve a single department by its unique identifier.
+*   **`CreateDepartment`**: Create a new department with provided details.
+*   **`UpdateDepartment`**: Update an existing department's details based on its ID.
+*   **`DeleteDepartment`**: Delete a department by its unique identifier.
+
+### 2. Setup and Configuration
+
+The gRPC server is integrated with Spring Boot and its port can be configured in your `application.properties` file.
+
+**Example `application.properties` configuration:**
+
+```properties
+# gRPC Server Configuration
+grpc.server.port=9090
+grpc.server.enable=true
+```
+
+The `src/main/java/com/example/springbootcrudapp/config/GrpcConfig.java` file is available for any additional gRPC server-side configuration, though most common settings are handled via `application.properties`.
+
+### 3. How to Use
+
+#### 3.1. Protocol Definition
+
+The service contract for the `DepartmentService` is defined using Protocol Buffers. You can find the full definition, including messages and RPC methods, in:
+
+*   **`src/main/proto/department.proto`**
+
+This `.proto` file is the authoritative source for the gRPC API and should be used to generate client stubs in your preferred programming language.
+
+#### 3.2. Client-Side Usage
+
+To interact with the gRPC Department service from a client application:
+
+1.  **Generate Client Stubs**: Use a gRPC plugin (e.g., Protoc Gradle Plugin, Maven Plugin, or `protoc` command-line tool) to generate client-side code from the `department.proto` file.
+2.  **Connect to the Service**: Create a `ManagedChannel` pointing to the gRPC server's host and port (e.g., `localhost:9090`).
+3.  **Make RPC Calls**: Use the generated client stub to invoke the desired gRPC methods.
+
+**Example Client Implementation:**
+
+A sample gRPC client demonstrating how to connect and make various calls to the `DepartmentService` is provided at:
+
+*   **`src/main/java/com/example/springbootcrudapp/client/DepartmentGrpcClient.java`**
+
+This client showcases how to perform CRUD operations (get all, get by ID, create, update, delete) against the gRPC endpoint.
+
+#### 3.3. Server-Side Implementation
+
+The g
+
 ## Technologies Used
 
 - Java 17
