@@ -81,7 +81,6 @@ public class UserController {
         }
     }
 
-    // GET /api/users/search?name={name} - Search users by name
     @GetMapping("/search")
     public ResponseEntity<List<User>> searchUsersByName(@RequestParam String name) {
         List<User> users = userService.searchUsersByName(name);
